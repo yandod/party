@@ -1,0 +1,21 @@
+<%= form_tag do %>
+<%= text_field_tag(:q, @number) %>
+<%= submit_tag("Calculate")%>
+<% end %>
+
+
+<% if @number > 0 then %>
+<% data = hoge @number %>
+<dl class="summary">
+	<dt>人数</dt>
+	<dd><%= @number %>名</dd>
+	<dt>beer(350ml缶)</dt>
+	<dd><%= data[:beer] %>本 (約<%= number_with_delimiter data[:subtotal_beer]%>円)</dd>
+	<dt>pizza(Lサイズ)</dt>
+	<dd><%= data[:pizza] %>枚 (約<%= number_with_delimiter data[:subtotal_pizza]%>円)</dd>
+	<dt>total</dt>
+	<dd><%= number_with_delimiter data[:total] %>円</dd>
+	<dt>warikan</dt>
+	<dd><%= number_with_delimiter data[:price] %>円</dd>
+</dl>
+<% end %>
