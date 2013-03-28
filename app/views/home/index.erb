@@ -1,21 +1,42 @@
-<%= form_tag do %>
-<%= text_field_tag(:q, @number) %>
-<%= submit_tag("Calculate")%>
-<% end %>
+<div id="container">
+    <!-- 黒いヘッダー -->
+    <div id="header" class="clearfix">
+        <div class="inner_container">
+            <h1 id="header_logo"><a href="/">HOW MANY BEER AND PIZZA?</a></h1>
+            <h3 id="header_about">人数を入れるとビールとピザの発注量を算出してくれるウェブサービスです。</h3>
+        </div>
+    </div><!-- header -->
 
-
-<% if @number > 0 then %>
-<% data = hoge @number %>
-<dl class="summary">
-	<dt>人数</dt>
-	<dd><%= @number %>名</dd>
-	<dt>beer(350ml缶)</dt>
-	<dd><%= data[:beer] %>本 (約<%= number_with_delimiter data[:subtotal_beer]%>円)</dd>
-	<dt>pizza(Lサイズ)</dt>
-	<dd><%= data[:pizza] %>枚 (約<%= number_with_delimiter data[:subtotal_pizza]%>円)</dd>
-	<dt>total</dt>
-	<dd><%= number_with_delimiter data[:total] %>円</dd>
-	<dt>warikan</dt>
-	<dd><%= number_with_delimiter data[:price] %>円</dd>
-</dl>
-<% end %>
+    <!-- メインコンテンツ -->
+    <div id="content" class="clearfix">
+        <div class="inner_container">
+            <div id="form_area">
+               	<%= form_tag do %>
+				<p input_box id="input_box"><%= text_field_tag(:q, @number) %>人分のビールとピザの発注量を計算する</p>
+				<p id="submit_box"><%= submit_tag("Calculate", {:id => "submit_button"})%></p>
+				<% end %>
+            </div><!-- form_area -->
+            <div id="result_area">
+				<% if @number > 0 then %>
+				<% data = hoge @number %>
+                <h2 id="result_title">発注量</h2>
+                <dl class="summary clearfix">
+                    <dt>人数</dt>
+                    <dd><%= @number %>名</dd>
+                    <dt>ビール(350ml缶)</dt>
+                    <dd><%= data[:beer] %>本 (約<%= number_with_delimiter data[:subtotal_beer]%>円)</dd>
+                    <dt>ピザ(Lサイズ)</dt>
+                    <dd><%= data[:pizza] %>枚 (約<%= number_with_delimiter data[:subtotal_pizza]%>円)</dd>
+                    <dt>合計金額</dt>
+                    <dd><%= number_with_delimiter data[:total] %>円</dd>
+                    <dt>一人あたりの金額</dt>
+                    <dd><%= number_with_delimiter data[:price] %>円</dd>
+                </dl>
+				<p id="banner_box" style="padding:10px;text-align:center">
+			  <iframe frameborder="0" allowtransparency="true" height="60" width="234" marginheight="0" scrolling="no" src="http://ad.jp.ap.valuecommerce.com/servlet/htmlbanner?sid=2669873&pid=881802451" marginwidth="0"><script language="javascript" src="http://ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2669873&pid=881802451"></script><noscript><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=2669873&pid=881802451" target="_blank" ><img src="http://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2669873&pid=881802451" height="60" width="234" border="0"></a></noscript></iframe>
+			  </p>
+				<% end %>
+            </div><!-- result_area -->
+        </div><!-- content_container -->
+    </div><!-- content -->
+</div><!-- container -->
