@@ -1,7 +1,7 @@
 module HomeHelper
   def hoge(number)
     beer = (number * 1.5) .ceil
-    pizza = number / 3 + 0.1 .ceil
+    pizza = (number / 3.65) .ceil
     subtotal_beer = beer * 200
     subtotal_pizza = pizza * 2500
     total = subtotal_beer + subtotal_pizza
