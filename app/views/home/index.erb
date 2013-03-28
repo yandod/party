@@ -15,6 +15,9 @@
 				<p input_box id="input_box"><%= text_field_tag(:q, @number) %>人分のビールとピザの発注量を計算する</p>
 				<p id="submit_box"><%= submit_tag("Calculate", {:id => "submit_button"})%></p>
 				<% end %>
+				<p style="padding:25px; text-align:right">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-text="よしおかの公式で懇親会を計画しました" data-via="yando" data-lang="ja" data-size="large">ツイート</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
             </div><!-- form_area -->
             <div id="result_area">
 				<% if @number > 0 then %>
