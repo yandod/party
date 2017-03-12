@@ -11,8 +11,13 @@
     <div id="content" class="clearfix">
         <div class="inner_container">
             <div id="form_area">
-               	<%= form_tag do %>
+               	<%= form_tag('/', :method=>:get) do %>
 				<p input_box id="input_box"><%= text_field_tag(:q, @number) %>人分のビールとピザの発注量を計算する</p>
+        <p id="brand_box">
+          <%= radio_button_tag(:b, 'domino', @brand == 'domino') %> ドミノ・ピザ
+          <%= radio_button_tag(:b, 'pizzala', @brand == 'pizzala') %> ピザーラ
+          <%= radio_button_tag(:b, 'pizzahut', @brand == 'pizzahut') %> ピザハット
+        </p>
 				<p id="submit_box"><%= submit_tag("Calculate", {:id => "submit_button"})%></p>
 				<% end %>
 				<p style="padding:25px; text-align:right">
@@ -21,24 +26,27 @@
             </div><!-- form_area -->
             <div id="result_area">
 				<% if @number > 0 then %>
-				<% data = hoge @number %>
+				<% data = hoge(@number, @brand) %>
                 <h2 id="result_title">発注量</h2>
                 <dl class="summary clearfix">
                     <dt>人数</dt>
                     <dd><%= @number %>名</dd>
                     <dt>ビール(350ml缶)</dt>
                     <dd><%= data[:beer] %>本 (約<%= number_with_delimiter data[:subtotal_beer]%>円)</dd>
-                    <dt>ピザ(Lサイズ)</dt>
+                    <dt>ピザ(Lサイズ) <%= @brand %></dt>
                     <dd><%= data[:pizza] %>枚 (約<%= number_with_delimiter data[:subtotal_pizza]%>円)</dd>
                     <dt>合計金額</dt>
                     <dd><%= number_with_delimiter data[:total] %>円</dd>
                     <dt>一人あたりの金額</dt>
                     <dd><%= number_with_delimiter data[:price] %>円</dd>
                 </dl>
-				<p id="banner_box" style="padding:10px;text-align:center">
-					<a href="http://click.linksynergy.com/fs-bin/click?id=NUwEQ5D8uZg&offerid=91101.10000023&type=4&subid=0"><IMG alt="ドミノ・ピザ【PC向けサイト】" border="0" src="http://www.dominos.jp/affiliate/banner/banner_link_cp03.gif"></a><IMG border="0" width="1" height="1" src="http://ad.linksynergy.com/fs-bin/show?id=NUwEQ5D8uZg&bids=91101.10000023&type=4&subid=0">
-						<br/>
-<a href="https://click.linksynergy.com/fs-bin/click?id=NUwEQ5D8uZg&offerid=438529.5&type=4&subid=0"><IMG alt="なんでも酒やカクヤス(ビール・ワイン等の通販・宅配）" border="0" src="http://img.kakuyasu.co.jp/lsjbn/tuhantakuhai_234_60.jpg"></a><IMG border="0" width="1" height="1" src="https://ad.linksynergy.com/fs-bin/show?id=NUwEQ5D8uZg&bids=438529.5&type=4&subid=0">			  </p>
+          <p id="banner_box" style="padding:10px;text-align:center">
+          <a href="http://click.linksynergy.com/fs-bin/click?id=NUwEQ5D8uZg&offerid=91101.10000023&type=4&subid=0"><IMG alt="ドミノ・ピザ【PC向けサイト】" border="0" src="http://www.dominos.jp/affiliate/banner/banner_link_cp03.gif"></a><IMG border="0" width="1" height="1" src="http://ad.linksynergy.com/fs-bin/show?id=NUwEQ5D8uZg&bids=91101.10000023&type=4&subid=0">
+          <br/>
+          <a href="https://click.linksynergy.com/fs-bin/click?id=NUwEQ5D8uZg&offerid=287550.11&type=4&subid=0"><IMG alt="ピザハットオンライン" border="0" src="https://pizzahut.jp/com/campaign/lsimages/03_234x60.jpg"></a><IMG border="0" width="1" height="1" src="https://ad.linksynergy.com/fs-bin/show?id=NUwEQ5D8uZg&bids=287550.11&type=4&subid=0">
+          <br/>
+          <a href="https://click.linksynergy.com/fs-bin/click?id=NUwEQ5D8uZg&offerid=438529.5&type=4&subid=0"><IMG alt="なんでも酒やカクヤス(ビール・ワイン等の通販・宅配）" border="0" src="http://img.kakuyasu.co.jp/lsjbn/tuhantakuhai_234_60.jpg"></a><IMG border="0" width="1" height="1" src="https://ad.linksynergy.com/fs-bin/show?id=NUwEQ5D8uZg&bids=438529.5&type=4&subid=0">
+          </p>
 				<% end %>
             </div><!-- result_area -->
         </div><!-- content_container -->

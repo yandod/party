@@ -76,6 +76,14 @@ ul, li {
     font-size: 16px;
     font-weight: bold;
 }
+
+#brand_box {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 #q {
     width: 50px;
     padding: 5px;
@@ -101,7 +109,7 @@ ul, li {
 }
 #result_area {
     width: 350px;
-    height: 370px;
+    height: 420px;
     padding: 25px;
     margin: 50px 25px;
     float: left;
